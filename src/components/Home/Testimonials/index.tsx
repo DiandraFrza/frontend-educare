@@ -44,7 +44,7 @@ const Testimonial = () => {
                     <Icon 
                         key={i}
                         icon={i < rating ? "solar:star-bold" : "solar:star-linear"}
-                        className={`text-sm ${i < rating ? 'text-accent-400' : 'text-slate-300'}`}
+                        className={`text-sm ${i < rating ? 'text-accent-400' : 'text-slate-300 dark:text-slate-600'}`}
                     />
                 ))}
             </div>
@@ -52,9 +52,9 @@ const Testimonial = () => {
     };
 
     return (
-        <section id="testimonial" className="py-24 bg-slate-50 relative overflow-hidden">
+        <section id="testimonial" className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
             {/* Background Pattern */}
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-700 to-transparent" />
             
             <div className='container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 relative z-10'>
                 {/* Section Header */}
@@ -64,13 +64,13 @@ const Testimonial = () => {
                     viewport={{ once: true }}
                     className="text-center max-w-2xl mx-auto mb-16"
                 >
-                    <span className="inline-block px-4 py-1.5 bg-white text-primary-600 text-sm font-semibold rounded-full shadow-soft mb-4 border border-slate-100">
+                    <span className="inline-block px-4 py-1.5 bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-400 text-sm font-semibold rounded-full shadow-soft dark:shadow-slate-900/50 mb-4 border border-slate-100 dark:border-slate-700">
                         Testimoni
                     </span>
-                    <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900 mb-4">
+                    <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900 dark:text-white mb-4">
                         Apa Kata Alumni Kami?
                     </h2>
-                    <p className="text-slate-600 text-lg">
+                    <p className="text-slate-600 dark:text-slate-400 text-lg">
                         Dengarkan pengalaman langsung dari peserta yang telah 
                         menyelesaikan program pelatihan di Educare Academy.
                     </p>
@@ -84,11 +84,11 @@ const Testimonial = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="bg-white rounded-3xl p-6 shadow-soft h-full hover:shadow-soft-lg transition-all duration-300"
+                                className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-soft dark:shadow-slate-900/50 h-full hover:shadow-soft-lg dark:hover:shadow-slate-900/80 transition-all duration-300"
                             >
                                 {/* Quote Icon */}
                                 <div className="mb-4">
-                                    <Icon icon="solar:quote-up-square-linear" className="text-3xl text-primary-200" />
+                                    <Icon icon="solar:quote-up-square-linear" className="text-3xl text-primary-200 dark:text-primary-800" />
                                 </div>
 
                                 {/* Rating */}
@@ -97,13 +97,13 @@ const Testimonial = () => {
                                 </div>
 
                                 {/* Comment */}
-                                <p className="text-slate-600 leading-relaxed mb-6 text-sm">
+                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 text-sm">
                                     "{item.comment}"
                                 </p>
 
                                 {/* Profile */}
-                                <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full flex items-center justify-center overflow-hidden">
+                                <div className="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-700">
+                                    <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900 rounded-full flex items-center justify-center overflow-hidden">
                                         <Image 
                                             src={`${getImagePrefix()}${item.imgSrc}`}
                                             alt={item.name}
@@ -113,10 +113,10 @@ const Testimonial = () => {
                                         />
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-secondary-900 text-sm">
+                                        <h4 className="font-semibold text-secondary-900 dark:text-slate-200 text-sm">
                                             {item.name}
                                         </h4>
-                                        <p className="text-xs text-slate-500">
+                                        <p className="text-xs text-slate-500 dark:text-slate-400">
                                             {item.profession}
                                         </p>
                                     </div>
@@ -135,6 +135,9 @@ const Testimonial = () => {
                         font-size: 10px;
                         color: #CBD5E1;
                         opacity: 1;
+                    }
+                    .dark .slick-dots li button:before {
+                        color: #475569;
                     }
                     .slick-dots li.slick-active button:before {
                         color: #3B82F6;

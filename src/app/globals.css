@@ -14,10 +14,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Dark mode base styles */
+.dark body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
 /* Selection Color */
 ::selection {
   background-color: rgba(59, 130, 246, 0.2);
   color: #1e3a8a;
+}
+
+.dark ::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
 }
 
 /* Custom Scrollbar */
@@ -29,13 +40,25 @@ body {
   background: #f1f5f9;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }
 
 /* Section Spacing */
@@ -62,6 +85,10 @@ img[loading="eager"] {
   @apply outline-none ring-2 ring-primary-500 ring-offset-2;
 }
 
+.dark :focus-visible {
+  @apply ring-offset-slate-900;
+}
+
 /* Slick Slider Customization */
 .slick-dots {
   @apply bottom-[-40px];
@@ -69,6 +96,10 @@ img[loading="eager"] {
 
 .slick-dots li button:before {
   @apply text-slate-300 text-[10px] opacity-100 transition-all;
+}
+
+.dark .slick-dots li button:before {
+  @apply text-slate-600;
 }
 
 .slick-dots li.slick-active button:before {
@@ -92,9 +123,17 @@ img[loading="eager"] {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-500;
 }
 
+.dark .gradient-text {
+  @apply from-primary-400 to-primary-300;
+}
+
 /* Glass Effect */
 .glass {
   @apply bg-white/80 backdrop-blur-lg;
+}
+
+.dark .glass {
+  @apply bg-slate-900/80;
 }
 
 /* Animation Utilities */
@@ -109,4 +148,17 @@ img[loading="eager"] {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Exclude motion elements from color transition */
+motion-div, 
+[data-framer-motion] {
+  transition-property: transform, opacity;
 }

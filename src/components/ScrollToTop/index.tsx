@@ -1,11 +1,10 @@
 'use client'
 import { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Top: 0 takes us all the way back to the top of the page
-  // Behavior: smooth keeps it smooth!
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -14,7 +13,6 @@ export default function ScrollToTop() {
   };
 
   useEffect(() => {
-    // Button is displayed after scrolling for 500 pixels
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
         setIsVisible(true);
@@ -31,13 +29,13 @@ export default function ScrollToTop() {
   return (
     <div className="fixed bottom-8 right-8 z-[999]">
       {isVisible && (
-        <div
+        <button
           onClick={scrollToTop}
           aria-label="scroll to top"
-          className="back-to-top flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-[#102C46] text-white shadow-md transition duration-300 ease-in-out hover:bg-dark"
+          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-secondary-800 dark:bg-slate-700 text-white shadow-lg shadow-secondary-900/20 dark:shadow-slate-900/50 transition-all duration-300 ease-in-out hover:bg-primary-600 dark:hover:bg-primary-500 hover:-translate-y-1"
         >
-          <span className="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
-        </div>
+          <Icon icon="solar:arrow-up-linear" className="text-xl" />
+        </button>
       )}
     </div>
   );

@@ -8,11 +8,11 @@ const CTA = () => {
   const totalSavings = allPackages.reduce((acc, pkg) => acc + pkg.savings, 0);
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
       {/* Background Decorations */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-200/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary-200/20 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-200/20 dark:bg-primary-900/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary-200/20 dark:bg-secondary-900/20 rounded-full blur-3xl" />
       
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 relative z-10">
         <motion.div 
@@ -118,10 +118,10 @@ const CTA = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-soft border border-slate-100"
+                className="flex items-center gap-3 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-soft dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-700"
               >
-                <Icon icon={badge.icon} className="text-2xl text-primary-500 flex-shrink-0" />
-                <span className="text-sm font-medium text-slate-700">{badge.text}</span>
+                <Icon icon={badge.icon} className="text-2xl text-primary-500 dark:text-primary-400 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{badge.text}</span>
               </motion.div>
             ))}
           </div>

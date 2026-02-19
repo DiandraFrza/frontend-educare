@@ -1,8 +1,6 @@
 "use client";
 
-import Image from 'next/image';
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { getImagePrefix } from '@/utils/util';
 import { motion } from 'framer-motion';
 import { allCourses } from '@/data/courses';
 
@@ -22,11 +20,11 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home-section" className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-primary-50 overflow-hidden">
+    <section id="home-section" className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-primary-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-100/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-100/20 rounded-full blur-3xl" />
-      <div className="absolute top-20 right-20 w-72 h-72 bg-primary-200/20 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-100/30 to-transparent dark:from-primary-900/20" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-100/20 dark:bg-secondary-900/20 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-20 w-72 h-72 bg-primary-200/20 dark:bg-primary-800/20 rounded-full blur-3xl" />
       
       <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md px-4 pt-24 pb-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-8rem)]">
@@ -43,27 +41,27 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-soft w-fit border border-primary-100"
+              className="inline-flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-soft w-fit border border-primary-100 dark:border-slate-700"
             >
               <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-secondary-700">
+              <span className="text-sm font-medium text-secondary-700 dark:text-slate-300">
                 {allCourses.length}+ Kelas Tersedia • Mulai 10K
               </span>
             </motion.div>
 
             {/* Main Headline */}
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-900 leading-tight">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-900 dark:text-white leading-tight">
               Pilih Kelas{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-500 dark:from-primary-400 dark:to-primary-300">
                 Impianmu
               </span>
               <br />Mulai dari 10K
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-              <strong>Akuntansi, Accurate, Excel, Pajak, UMKM</strong> — semua ada! 
-              Belajar dari <span className="text-secondary-700 font-semibold">M. Aziz Andriansyah, S.Pd., CAAT.</span>{" "}
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
+              <strong className="text-slate-800 dark:text-slate-200">Akuntansi, Accurate, Excel, Pajak, UMKM</strong> — semua ada! 
+              Belajar dari <span className="text-secondary-700 dark:text-secondary-400 font-semibold">M. Aziz Andriansyah, S.Pd., CAAT.</span>{" "}
               dengan harga terjangkau dan jadwal fleksibel.
             </p>
 
@@ -77,8 +75,8 @@ const Hero = () => {
                   transition={{ delay: 0.3 + index * 0.1 }}
                   className="text-center"
                 >
-                  <p className="text-xl sm:text-2xl font-bold text-primary-600">{stat.value}</p>
-                  <p className="text-xs text-slate-500">{stat.label}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400">{stat.value}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{stat.label}</p>
                 </motion.div>
               ))}
             </div>
@@ -99,7 +97,7 @@ const Hero = () => {
                 target="_blank"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 bg-white text-slate-700 px-8 py-4 rounded-2xl font-semibold shadow-soft border border-slate-200 hover:border-primary-200 hover:shadow-soft-lg transition-all"
+                className="inline-flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-8 py-4 rounded-2xl font-semibold shadow-soft border border-slate-200 dark:border-slate-700 hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-soft-lg transition-all"
               >
                 <Icon icon="tabler:brand-instagram" className="text-xl text-pink-500" />
                 <span>Konsultasi Gratis</span>
@@ -107,9 +105,9 @@ const Hero = () => {
             </div>
 
             {/* Mini Features */}
-            <div className="flex flex-wrap gap-4 pt-4 border-t border-slate-200">
+            <div className="flex flex-wrap gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-center gap-2 text-sm text-slate-600">
+                <div key={index} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                   <Icon icon="solar:check-circle-bold" className="text-success text-lg" />
                   <span>{feature}</span>
                 </div>
@@ -126,8 +124,8 @@ const Hero = () => {
           >
             <div className="relative">
               {/* Main Card */}
-              <div className="bg-white rounded-3xl shadow-soft-xl p-6 border border-slate-100">
-                <h3 className="font-display font-bold text-lg text-secondary-900 mb-4">
+              <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-soft-xl dark:shadow-slate-900/50 p-6 border border-slate-100 dark:border-slate-700">
+                <h3 className="font-display font-bold text-lg text-secondary-900 dark:text-white mb-4">
                   Kelas Terpopuler
                 </h3>
                 
@@ -137,22 +135,22 @@ const Hero = () => {
                     { name: 'Accurate 5 Dasar', price: '25K', students: '120' },
                     { name: 'Excel untuk Akuntansi', price: '35K', students: '100' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                    <div key={i} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl">
                       <div>
-                        <p className="font-medium text-secondary-900 text-sm">{item.name}</p>
-                        <p className="text-xs text-slate-500">{item.students} siswa</p>
+                        <p className="font-medium text-secondary-900 dark:text-slate-200 text-sm">{item.name}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400">{item.students} siswa</p>
                       </div>
-                      <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-lg text-sm font-bold">
+                      <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 rounded-lg text-sm font-bold">
                         {item.price}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-slate-100">
+                <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
                   <a 
                     href="#courses"
-                    className="flex items-center justify-center gap-2 w-full py-3 bg-secondary-50 text-secondary-700 rounded-xl font-semibold hover:bg-secondary-900 hover:text-white transition-all"
+                    className="flex items-center justify-center gap-2 w-full py-3 bg-secondary-50 dark:bg-slate-700 text-secondary-700 dark:text-slate-300 rounded-xl font-semibold hover:bg-secondary-900 dark:hover:bg-slate-600 hover:text-white transition-all"
                   >
                     <span>Lihat Semua</span>
                     <Icon icon="solar:arrow-right-linear" />
@@ -164,15 +162,15 @@ const Hero = () => {
               <motion.div 
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-soft-xl border border-slate-100"
+                className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-soft-xl dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-700"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center">
-                    <Icon icon="solar:graduation-cap-linear" className="text-2xl text-primary-600" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900 dark:to-primary-800 rounded-xl flex items-center justify-center">
+                    <Icon icon="solar:graduation-cap-linear" className="text-2xl text-primary-600 dark:text-primary-400" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-secondary-900">{allCourses.length}+</p>
-                    <p className="text-sm text-slate-500">Kelas Tersedia</p>
+                    <p className="text-2xl font-bold text-secondary-900 dark:text-white">{allCourses.length}+</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Kelas Tersedia</p>
                   </div>
                 </div>
               </motion.div>

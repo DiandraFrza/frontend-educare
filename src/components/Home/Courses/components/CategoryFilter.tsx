@@ -24,8 +24,8 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
         onClick={() => onCategoryChange('all')}
         className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm transition-all ${
           activeCategory === 'all'
-            ? 'bg-secondary-900 text-white shadow-soft'
-            : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
+            ? 'bg-secondary-900 dark:bg-secondary-800 text-white shadow-soft'
+            : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
         }`}
       >
         <Icon icon="solar:widget-linear" className="text-base" />
@@ -40,8 +40,8 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
           onClick={() => onCategoryChange(category.id)}
           className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm transition-all ${
             activeCategory === category.id
-              ? 'bg-secondary-900 text-white shadow-soft'
-              : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
+              ? 'bg-secondary-900 dark:bg-secondary-800 text-white shadow-soft'
+              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
           }`}
         >
           <Icon icon={category.icon} className="text-base" />

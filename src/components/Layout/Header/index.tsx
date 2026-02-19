@@ -23,7 +23,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-lg shadow-soft py-3"
+          ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-soft dark:shadow-slate-900/50 py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -38,7 +38,7 @@ const Header = () => {
               <Link
                 key={index}
                 href={item.href}
-                className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors"
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               >
                 {item.label}
               </Link>
@@ -63,7 +63,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-600 hover:text-primary-600 transition-colors"
+              className="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               <Icon
                 icon={isMobileMenuOpen ? "solar:close-circle-linear" : "solar:hamburger-menu-linear"}
@@ -79,13 +79,13 @@ const Header = () => {
             isMobileMenuOpen ? "max-h-96 mt-4" : "max-h-0"
           }`}
         >
-          <nav className="bg-white rounded-2xl shadow-soft-lg p-4 space-y-2">
+          <nav className="bg-white dark:bg-slate-800 rounded-2xl shadow-soft-lg dark:shadow-slate-900/50 p-4 space-y-2">
             {headerData.map((item, index) => (
               <Link
                 key={index}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-slate-600 hover:text-primary-600 hover:bg-primary-50 rounded-xl transition-colors"
+                className="block px-4 py-3 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-slate-700 rounded-xl transition-colors"
               >
                 {item.label}
               </Link>

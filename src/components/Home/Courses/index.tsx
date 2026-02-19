@@ -21,9 +21,9 @@ const Courses: React.FC = () => {
   const popularCourses = getPopularCourses();
 
   return (
-    <section id="courses" className="py-24 bg-slate-50 relative">
+    <section id="courses" className="py-24 bg-slate-50 dark:bg-slate-900 relative">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
+      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, #1E3A5F 1px, transparent 0)`,
         backgroundSize: '40px 40px'
       }} />
@@ -36,13 +36,13 @@ const Courses: React.FC = () => {
           viewport={{ once: true }}
           className="text-center max-w-2xl mx-auto mb-8"
         >
-          <span className="inline-block px-4 py-1.5 bg-white text-primary-600 text-sm font-semibold rounded-full shadow-soft mb-4 border border-slate-100">
+          <span className="inline-block px-4 py-1.5 bg-white dark:bg-slate-800 text-primary-600 dark:text-primary-400 text-sm font-semibold rounded-full shadow-soft dark:shadow-slate-900/50 mb-4 border border-slate-100 dark:border-slate-700">
             Program Pelatihan
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900 mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900 dark:text-white mb-4">
             Pilih Kelas Sesuai Kebutuhanmu
           </h2>
-          <p className="text-slate-600 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-lg">
             Berbagai program pelatihan dari level pemula hingga mahir, 
             dengan harga yang terjangkau dan fasilitas lengkap.
           </p>
@@ -62,26 +62,26 @@ const Courses: React.FC = () => {
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-6 mb-12"
         >
-          <div className="text-center px-6 py-3 bg-white rounded-xl shadow-soft">
-            <p className="text-2xl font-bold text-primary-600">{allCourses.length}+</p>
-            <p className="text-sm text-slate-500">Kelas Tersedia</p>
+          <div className="text-center px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow-soft dark:shadow-slate-900/50">
+            <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">{allCourses.length}+</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">Kelas Tersedia</p>
           </div>
-          <div className="text-center px-6 py-3 bg-white rounded-xl shadow-soft">
-            <p className="text-2xl font-bold text-primary-600">Mulai 10K</p>
-            <p className="text-sm text-slate-500">Harga Terjangkau</p>
+          <div className="text-center px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow-soft dark:shadow-slate-900/50">
+            <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">Mulai 10K</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">Harga Terjangkau</p>
           </div>
-          <div className="text-center px-6 py-3 bg-white rounded-xl shadow-soft">
-            <p className="text-2xl font-bold text-primary-600">500+</p>
-            <p className="text-sm text-slate-500">Alumni</p>
+          <div className="text-center px-6 py-3 bg-white dark:bg-slate-800 rounded-xl shadow-soft dark:shadow-slate-900/50">
+            <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">500+</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">Alumni</p>
           </div>
         </motion.div>
 
         {/* Popular Courses */}
         {activeCategory === 'all' && (
           <div className="mb-16">
-            <h3 className="font-display text-xl font-bold text-secondary-900 mb-6 flex items-center gap-2">
-              <span className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
-                <span className="text-amber-500 text-sm">★</span>
+            <h3 className="font-display text-xl font-bold text-secondary-900 dark:text-white mb-6 flex items-center gap-2">
+              <span className="w-8 h-8 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center">
+                <span className="text-amber-500 dark:text-amber-400 text-sm">★</span>
               </span>
               Kelas Populer
             </h3>
@@ -95,7 +95,7 @@ const Courses: React.FC = () => {
 
         {/* All Courses */}
         <div>
-          <h3 className="font-display text-xl font-bold text-secondary-900 mb-6">
+          <h3 className="font-display text-xl font-bold text-secondary-900 dark:text-white mb-6">
             {activeCategory === 'all' ? 'Semua Kelas' : `Kelas ${courseCategories.find(c => c.id === activeCategory)?.name}`}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -113,13 +113,13 @@ const Courses: React.FC = () => {
             viewport={{ once: true }}
             className="text-center max-w-2xl mx-auto mb-12"
           >
-            <span className="inline-block px-4 py-1.5 bg-white text-red-500 text-sm font-semibold rounded-full shadow-soft mb-4 border border-slate-100">
+            <span className="inline-block px-4 py-1.5 bg-white dark:bg-slate-800 text-red-500 text-sm font-semibold rounded-full shadow-soft dark:shadow-slate-900/50 mb-4 border border-slate-100 dark:border-slate-700">
               Paket Hemat
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900 mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900 dark:text-white mb-4">
               Bundling Package
             </h2>
-            <p className="text-slate-600 text-lg">
+            <p className="text-slate-600 dark:text-slate-400 text-lg">
               Pilih paket bundling untuk hemat lebih banyak! 
               Kombinasi kelas yang saling melengkapi.
             </p>

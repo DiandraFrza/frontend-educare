@@ -109,10 +109,10 @@ export const getLevelLabel = (level: string): string => {
 
 export const getLevelColor = (level: string): string => {
   const colors: Record<string, string> = {
-    'pemula': 'bg-green-100 text-green-700',
-    'menengah': 'bg-blue-100 text-blue-700',
-    'mahir': 'bg-purple-100 text-purple-700',
-    'semua': 'bg-gray-100 text-gray-700'
+    'pemula': 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400',
+    'menengah': 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400',
+    'mahir': 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400',
+    'semua': 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
   };
-  return colors[level] || 'bg-gray-100 text-gray-700';
+  return colors[level] || 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300';
 };

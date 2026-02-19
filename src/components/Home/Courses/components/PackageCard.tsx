@@ -26,10 +26,10 @@ const PackageCard: React.FC<PackageCardProps> = ({ package: pkg, index = 0 }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className={`group relative bg-white rounded-2xl overflow-hidden transition-all duration-300 h-full flex flex-col ${
+      className={`group relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden transition-all duration-300 h-full flex flex-col ${
         pkg.popular 
-          ? 'shadow-soft-xl ring-2 ring-primary-500' 
-          : 'shadow-soft hover:shadow-soft-xl'
+          ? 'shadow-soft-xl dark:shadow-slate-900/50 ring-2 ring-primary-500' 
+          : 'shadow-soft dark:shadow-slate-900/50 hover:shadow-soft-xl dark:hover:shadow-slate-900/80'
       }`}
     >
       {/* Popular Badge */}
@@ -42,10 +42,10 @@ const PackageCard: React.FC<PackageCardProps> = ({ package: pkg, index = 0 }) =>
       <div className={`p-6 flex flex-col flex-1 ${pkg.popular ? 'pt-10' : ''}`}>
         {/* Header */}
         <div className="mb-4">
-          <h3 className="font-display font-bold text-xl text-secondary-900 mb-2">
+          <h3 className="font-display font-bold text-xl text-secondary-900 dark:text-white mb-2">
             {pkg.name}
           </h3>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             {pkg.description}
           </p>
         </div>
@@ -55,34 +55,34 @@ const PackageCard: React.FC<PackageCardProps> = ({ package: pkg, index = 0 }) =>
           {courseNames.map((name, i) => (
             <div key={i} className="flex items-start gap-2">
               <Icon icon="solar:check-circle-bold" className="text-success flex-shrink-0 mt-0.5 text-sm" />
-              <span className="text-sm text-slate-700 line-clamp-1">{name}</span>
+              <span className="text-sm text-slate-700 dark:text-slate-300 line-clamp-1">{name}</span>
             </div>
           ))}
           {moreCount > 0 && (
             <div className="flex items-center gap-2">
               <Icon icon="solar:add-circle-linear" className="text-primary-500 flex-shrink-0 text-sm" />
-              <span className="text-sm text-primary-600 font-medium">+{moreCount} kursus lainnya</span>
+              <span className="text-sm text-primary-600 dark:text-primary-400 font-medium">+{moreCount} kursus lainnya</span>
             </div>
           )}
         </div>
 
         {/* Savings Badge */}
         <div className="mb-4">
-          <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-xs font-semibold">
             <Icon icon="solar:piggy-bank-linear" />
             Hemat {formatPrice(pkg.savings)}
           </span>
         </div>
 
         {/* Pricing */}
-        <div className="pt-4 border-t border-slate-100 mb-4">
+        <div className="pt-4 border-t border-slate-100 dark:border-slate-700 mb-4">
           <div className="flex items-baseline gap-2 mb-1">
-            <span className="text-sm text-slate-400 line-through">
+            <span className="text-sm text-slate-400 dark:text-slate-500 line-through">
               {formatPrice(pkg.totalPrice)}
             </span>
           </div>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-bold text-secondary-900">
+            <span className="text-2xl font-bold text-secondary-900 dark:text-white">
               {formatPrice(pkg.packagePrice)}
             </span>
           </div>
@@ -95,7 +95,7 @@ const PackageCard: React.FC<PackageCardProps> = ({ package: pkg, index = 0 }) =>
           className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-all ${
             pkg.popular
               ? 'bg-primary-600 text-white hover:bg-primary-700'
-              : 'bg-secondary-50 text-secondary-700 hover:bg-secondary-900 hover:text-white'
+              : 'bg-secondary-50 dark:bg-slate-700 text-secondary-700 dark:text-slate-300 hover:bg-secondary-900 dark:hover:bg-slate-600 hover:text-white'
           }`}
         >
           <Icon icon="tabler:brand-whatsapp" className="text-base" />
