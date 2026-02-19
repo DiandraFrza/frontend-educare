@@ -115,7 +115,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index = 0 }) => {
 
         {/* CTA */}
         <Link 
-          href={`https://wa.me/?text=Saya%20tertarik%20dengan%20kursus%20${encodeURIComponent(course.title)}`}
+          href={`https://wa.me/6288210372698?text=Saya%20tertarik%20dengan%20kursus%20${encodeURIComponent(course.title)}`}
           target="_blank"
           className="flex items-center justify-center gap-2 w-full bg-secondary-50 dark:bg-slate-700 text-secondary-700 dark:text-slate-300 py-2.5 rounded-xl text-sm font-semibold hover:bg-secondary-900 dark:hover:bg-slate-600 hover:text-white transition-all"
         >

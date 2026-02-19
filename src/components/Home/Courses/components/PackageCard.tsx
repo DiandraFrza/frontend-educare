@@ -90,7 +90,7 @@ const PackageCard: React.FC<PackageCardProps> = ({ package: pkg, index = 0 }) =>
 
         {/* CTA */}
         <Link 
-          href={`https://wa.me/?text=Saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}`}
+          href={`https://wa.me/6288210372698?text=Saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}`}
           target="_blank"
           className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-all ${
             pkg.popular

@@ -81,7 +81,7 @@ const CTA = () => {
                   <Icon icon="solar:arrow-right-linear" className="text-xl" />
                 </a>
                 <a 
-                  href={`https://wa.me/?text=Halo%20Educare%2C%20saya%20tertarik%20dengan%20kelasnya`}
+                  href={`https://wa.me/6288210372698?text=Halo%20Educare%2C%20saya%20tertarik%20dengan%20kelasnya`}
                   target="_blank"
                   className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/20 transition-all border border-white/20"
                 >
@@ -109,7 +109,7 @@ const CTA = () => {
             {[
               { icon: "solar:shield-check-linear", text: "Garansi Belajar" },
               { icon: "solar:clock-circle-linear", text: "Akses Lifetime" },
-              { icon: "solar:certificate-linear", text: "Sertifikat Resmi" },
+              { icon: "solar:award-linear", text: "Sertifikat Resmi" },
               { icon: "solar:users-group-rounded-linear", text: "Komunitas Alumni" },
             ].map((badge, index) => (
               <motion.div 

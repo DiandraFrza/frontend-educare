@@ -115,7 +115,7 @@ const Footer = () => {
             </ul>
 
             {/* CTA */}
-            <a href={`https://wa.me/?text=Halo%20Educare%2C%20saya%20mau%20tanya%20tentang%20kelas`} target="_blank" className="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-3 rounded-xl font-semibold text-sm mt-6 hover:bg-primary-500 transition-colors">
+            <a href={`https://wa.me/6288210372698?text=Halo%20Educare%2C%20saya%20mau%20tanya%20tentang%20kelas`} target="_blank" className="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-3 rounded-xl font-semibold text-sm mt-6 hover:bg-primary-500 transition-colors">
               <Icon icon="tabler:brand-whatsapp" />
               <span>Tanya via WA</span>
             </a>
@@ -126,10 +126,10 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm text-center md:text-left">© 2025 Educare Academy. {allCourses.length}+ kelas mulai 10K.</p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="text-slate-500 hover:text-white text-sm transition-colors">
+            <Link href="/kebijakan-privasi" className="text-slate-500 hover:text-white text-sm transition-colors">
               Kebijakan Privasi
             </Link>
-            <Link href="#" className="text-slate-500 hover:text-white text-sm transition-colors">
+            <Link href="/syarat-ketentuan" className="text-slate-500 hover:text-white text-sm transition-colors">
               Syarat & Ketentuan
             </Link>
           </div>

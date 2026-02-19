@@ -13,10 +13,10 @@ const Hero = () => {
   ];
 
   const features = [
-    "Relasi & Networking",
-    "E-Book & E-Modul", 
-    "Konsultasi Tutor",
-    "Sertifikat Resmi"
+    { icon: "solar:users-group-rounded-linear", text: "Relasi & Networking" },
+    { icon: "solar:notebook-linear", text: "E-Book & E-Modul" },
+    { icon: "solar:chat-dots-linear", text: "Konsultasi Tutor" },
+    { icon: "solar:award-linear", text: "Sertifikat Resmi" }
   ];
 
   return (
@@ -108,8 +108,8 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                  <Icon icon="solar:check-circle-bold" className="text-success text-lg" />
-                  <span>{feature}</span>
+                  <Icon icon={feature.icon} className="text-primary-500 dark:text-primary-400 text-lg" />
+                  <span>{feature.text}</span>
                 </div>
               ))}
             </div>

@@ -32,13 +32,13 @@ const About = () => {
       highlight: "Lifetime",
     },
     {
-      icon: "solar:book-open-linear",
+      icon: "solar:notebook-bookmark-linear",
       title: "E-Book & E-Modul",
       description: "Materi pembelajaran eksklusif brand Educare yang bisa diakses kapan saja.",
       highlight: "Eksklusif",
     },
     {
-      icon: "solar:certificate-linear",
+      icon: "solar:medal-ribbon-linear",
       title: "Sertifikat Fisik",
       description: "Sertifikat penyelesaian program yang bisa digunakan untuk melamar kerja.",
       highlight: "Resmi",
