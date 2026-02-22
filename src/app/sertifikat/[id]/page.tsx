@@ -45,7 +45,7 @@ export default function SertifikatPage({ params }: SertifikatPageProps) {
     notFound();
   }
 
-  const verificationUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/verifikasi/${certificate.id}`;
+  const verificationUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://educare-academy-test.netlify.app"}/verifikasi/${certificate.id}`;
 
   const breadcrumbs = [
     { label: "Beranda", href: "/" },
