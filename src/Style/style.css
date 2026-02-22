@@ -1,0 +1,17 @@
+/** @format */
+
+.card-default {
+  @apply bg-white dark:bg-slate-800 rounded-xl shadow-soft p-6 border border-slate-200 dark:border-slate-700;
+}
+
+.card-title {
+  @apply font-display font-bold mb-4 flex items-center gap-2;
+}
+
+.label-default {
+  @apply text-xs text-slate-500 dark:text-slate-400 block mb-1;
+}
+
+.icon-primary {
+  @apply text-primary-500;
+}

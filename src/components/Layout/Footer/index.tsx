@@ -8,7 +8,7 @@ import { allCourses, allPackages } from "@/data/courses";
 
 const Footer = () => {
   const menuLinks = [
-    { label: "Beranda", href: "#home-section" },
+    { label: "Beranda", href: "/" },
     { label: "Benefit", href: "#about" },
     { label: "Kelas", href: "#courses" },
     { label: "Mentor", href: "#mentor" },

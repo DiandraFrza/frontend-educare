@@ -4,16 +4,23 @@
  */
 
 const nextConfig = {
-  output: "export",
+  // output: "export", // Removed for API routes support
   distDir: "out",
   images: {
     unoptimized: true,
   },
-  // Ensure trailing slashes for consistent static export behavior
   trailingSlash: true,
-  // If deploying to root domain, leave empty. If to subdirectory, set to '/subdirectory-name'
   basePath: "",
   assetPrefix: "",
+  // Enable for Laravel API
+  async rewrites() {
+    return [
+      {
+        source: '/api/laravel/:path*',
+        destination: 'http://localhost:8000/api/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
