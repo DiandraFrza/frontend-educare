@@ -4,6 +4,7 @@ export interface Certificate {
   holderName: string;
   holderId?: string;
   holderPhoto?: string;
+  participantPhoto?: string | null;
   holderBirthPlace?: string;
   holderBirthDate?: string;
   holderInstitution?: string;

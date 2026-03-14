@@ -208,7 +208,7 @@ export const generateFormalCertificatePDF = async (
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(8);
   doc.setTextColor(30, 41, 59);
-  const directorName = certificate.directorName || 'M. Aziz Andriansyah, S.Pd., Gr., CAAT., CAP., CTT';
+  const directorName = certificate.directorName || 'M. Aziz Andriansyah, S.Pd., Gr., CAAT., CAP., CTTr';
   doc.text(directorName, leftSigX + sigWidth / 2, footerY + 4, { align: 'center' });
   
   doc.setFont('helvetica', 'normal');

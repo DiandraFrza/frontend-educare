@@ -119,7 +119,7 @@ const CertificatePreview: React.FC<CertificatePreviewProps> = ({ certificate, ve
   const TEXT_MUTED = "#6b7280";
   const BORDER_COLOR = "#e5e7eb";
 
-  const directorName = certificate.directorName || "M. Aziz Andriansyah, S.Pd., Gr., CAAT., CAP., CTTr";
+  const directorName = certificate.directorName || "M. Aziz Andriansyah, S.Pd., Gr., CAAT., CAP., CTTrr";
   const directorTitle = certificate.directorTitle || "Direktur Utama";
   const managerName = certificate.managerName || "Azriel Hikmal Maulana Rafi, S.Pd.";
   const managerTitle = certificate.managerTitle || "Manager Divisi Edukasi";
@@ -204,7 +204,7 @@ const CertificatePreview: React.FC<CertificatePreviewProps> = ({ certificate, ve
                 {/* Left Logo - EDUCARE ACADEMY */}
                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <img
-                    src="/images/logo/logoedu.svg"
+                    src="/images/logo/logoedu1.png"
                     alt="Educare Logo"
                     style={{ height: "48px", width: "auto", objectFit: "contain" }}
                     onError={(e) => {
@@ -237,8 +237,11 @@ const CertificatePreview: React.FC<CertificatePreviewProps> = ({ certificate, ve
 
                 {/* Center Title */}
                 <div style={{ textAlign: "center", flex: 1, padding: "0 20px" }}>
-                  <p style={{ fontSize: "20px", color: NAVY, fontWeight: 800, letterSpacing: "0.01em", margin: "0 0 4px", fontFamily: "poppins, sans-serif" }}>PT EDUCARE PRESTASI INDONESIA</p>
-                  <p style={{ fontSize: "13px", color: TEXT_MUTED, fontStyle: "italic", margin: 0, letterSpacing: "0.18em", fontFamily: "poppins, sans-serif" }}>ACADEMY OF EXCELLENT</p>
+                  <p style={{ fontSize: "21px", color: NAVY, fontWeight: 800, letterSpacing: "0.02em", margin: "0 0 2px", fontFamily: "poppins, sans-serif" }}>PT EDUCARE PRESTASI INDONESIA</p>
+                  <p style={{ fontSize: "14px", color: NAVY, fontWeight: 700, margin: "0 0 4px", letterSpacing: "0.15em", fontFamily: "poppins, sans-serif" }}>ACADEMY OF EXCELLENT</p>
+                  <p style={{ fontSize: "12px", color: TEXT_DARK, margin: "0 0 2px", fontWeight: 600, fontFamily: "poppins, sans-serif" }}>NIB: 2712240065221 | KBLI: 71201, 78429, 85495, 85499</p>
+                  {/* <p style={{ fontSize: "12px", color: TEXT_DARK, margin: "0 0 2px", fontWeight: 600, fontFamily: "poppins, sans-serif" }}>NOMOR KEGIATAN USAHA : 20241-2270-9124-0002-2075</p> */}
+                  <p style={{ fontSize: "11px", color: TEXT_MUTED, fontStyle: "normal", margin: 0, fontFamily: "poppins, sans-serif" }}>Jl. Jembatan Besi XII, Rt012/009 Kel. Jembatan Besi, Kec. Tambora, Jakarta Barat 11320</p>
                 </div>
 
                 {/* Right Logo - Academy of Excellence emblem - DIperbesar */}
@@ -303,7 +306,21 @@ const CertificatePreview: React.FC<CertificatePreviewProps> = ({ certificate, ve
                       overflow: "hidden",
                     }}
                   >
-                    {certificate.holderPhoto ? <img src={certificate.holderPhoto} alt={certificate.holderName} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Icon icon="solar:user-bold" style={{ fontSize: "50px", color: `${NAVY}30` }} />}
+                    {certificate.participantPhoto ? (
+                      <img
+                        src={
+                          certificate.participantPhoto.startsWith('http')
+                            ? certificate.participantPhoto
+                            : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}${certificate.participantPhoto}`
+                        }
+                        alt={certificate.holderName}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                    ) : certificate.holderPhoto ? (
+                      <img src={certificate.holderPhoto} alt={certificate.holderName} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    ) : (
+                      <Icon icon="solar:user-bold" style={{ fontSize: "50px", color: `${NAVY}30` }} />
+                    )}
                   </div>
 
                   {/* QR Code - POSISI DI BAWAH FOTO */}
@@ -348,71 +365,71 @@ const CertificatePreview: React.FC<CertificatePreviewProps> = ({ certificate, ve
 
                   {/* Signatures - Layout seperti gambar ke-3 */}
                   {/* ── AREA TANDA TANGAN & TANGGAL ── */}
-                  <div style={{ position: "relative", marginTop: "60px", marginRight: "20px", zIndex: 100 }}>
-                    {" "}
-                    {/* Ubah marginTop ini untuk turunkan seluruh blok */}
-                    {/* Baris Tanda Tangan */}
-                    {/* ── AREA TANDA TANGAN ── */}
+                  <div style={{ position: "relative", marginTop: "40px", marginRight: "20px", zIndex: 100 }}>
+                    
                     <div
                       style={{
                         display: "flex",
-                        gap: "40px", // Jarak antar dua blok tanda tangan
-                        justifyContent: "space-between", // Memisahkan kiri dan kanan secara maksimal
-                        marginTop: "50px",
-                        position: "relative",
+                        justifyContent: "space-between",
+                        alignItems: "flex-end",
                       }}
                     >
                       {/* Director - Sisi Kiri (Pak Aziz) */}
                       <div
                         style={{
-                          textAlign: "left", // <── Membuat nama rata kiri
-                          width: "350px", // <── Diperlebar agar gelar tidak turun ke bawah
+                          textAlign: "left",
+                          width: "350px",
                           paddingLeft: "20px",
                         }}
                       >
-                        <div style={{ height: "65px", display: "flex", alignItems: "flex-end", justifyContent: "flex-start", marginBottom: "8px" }}>{certificate.directorSignature ? <img src={certificate.directorSignature} alt="TTD" style={{ height: "60px", objectFit: "contain" }} /> : <div style={{ width: "200px", borderBottom: `1px solid ${NAVY}40` }} />}</div>
+                         <div style={{ height: "65px", display: "flex", alignItems: "flex-end", justifyContent: "flex-start", marginBottom: "8px" }}>
+                          {certificate.directorSignature ? (
+                            <img src={certificate.directorSignature} alt="TTD" style={{ height: "60px", objectFit: "contain" }} />
+                          ) : (
+                            <div style={{ width: "200px", borderBottom: `1px solid ${NAVY}40` }} />
+                          )}
+                        </div>
 
-                        {/* Nama Aziz - Ditambahkan whiteSpace agar tidak memotong */}
-                        <p
-                          style={{
-                            fontSize: "11px",
-                            fontWeight: 600,
-                            color: TEXT_DARK,
-                            margin: 0,
-                            whiteSpace: "nowrap", // <── Memastikan nama tetap satu baris
-                          }}
-                        >
-                          {directorName}
+                        <p style={{ fontSize: "11px", fontWeight: 600, color: TEXT_DARK, margin: 0, whiteSpace: "nowrap" }}>
+                          {certificate.directorName || "M. Aziz Andriansyah, S.Pd., Gr., CAAT., CAP., CTTrr"}
                         </p>
-
                         <div style={{ width: "250px", height: "1.2px", background: NAVY, margin: "5px 0" }} />
-                        <p style={{ fontSize: "10px", color: TEXT_MUTED, margin: 0 }}>{directorTitle}</p>
+                        <p style={{ fontSize: "10px", color: TEXT_MUTED, margin: 0 }}>
+                          {certificate.directorTitle || "Direktur Utama"}
+                        </p>
                       </div>
 
-                      {/* Manager - Sisi Kanan (Pak Azriel) */}
+                      {/* Manager & Tanggal - Sisi Kanan (Pak Azriel) */}
                       <div
                         style={{
-                          textAlign: "center", // Sisi kanan biasanya tetap center agar estetik
+                          textAlign: "center",
                           width: "250px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center"
                         }}
                       >
-                        <div style={{ height: "65px", display: "flex", alignItems: "flex-end", justifyContent: "center", marginBottom: "8px" }}>{certificate.managerSignature ? <img src={certificate.managerSignature} alt="TTD" style={{ height: "60px", objectFit: "contain" }} /> : <div style={{ width: "160px", borderBottom: `1px solid ${NAVY}40` }} />}</div>
-                        <p style={{ fontSize: "11px", fontWeight: 600, color: TEXT_DARK, margin: 0 }}>{managerName}</p>
+                        {/* Tanggal Jakarta (Diletakkan di atas TTD Manager agar tidak terdorong) */}
+                        <p style={{ fontSize: "11px", color: TEXT_DARK, margin: "0 0 10px 0", fontFamily: "poppins, sans-serif" }}>
+                          Jakarta, {formatDate(certificate.issueDate)}
+                        </p>
+
+                        <div style={{ height: "65px", display: "flex", alignItems: "flex-end", justifyContent: "center", marginBottom: "8px" }}>
+                          {certificate.managerSignature ? (
+                            <img src={certificate.managerSignature} alt="TTD" style={{ height: "60px", objectFit: "contain" }} />
+                          ) : (
+                            <div style={{ width: "160px", borderBottom: `1px solid ${NAVY}40` }} />
+                          )}
+                        </div>
+                        
+                        <p style={{ fontSize: "11px", fontWeight: 600, color: TEXT_DARK, margin: 0 }}>
+                          {managerName}
+                        </p>
                         <div style={{ width: "170px", height: "1.2px", background: NAVY, margin: "5px auto" }} />
-                        <p style={{ fontSize: "10px", color: TEXT_MUTED, margin: 0 }}>{managerTitle}</p>
+                        <p style={{ fontSize: "10px", color: TEXT_MUTED, margin: 0 }}>
+                          {managerTitle}
+                        </p>
                       </div>
-                    </div>
-                    {/* Tanggal Jakarta */}
-                    <div
-                      style={{
-                        textAlign: "right",
-                        position: "absolute", // Pakai absolute agar benar-benar bebas
-                        bottom: "-40px", // <── BEBAS: Atur jarak dari bawah area ttd
-                        right: "0px", // <── BEBAS: Atur jarak dari kanan
-                        fontFamily: "poppins, sans-serif",
-                      }}
-                    >
-                      <p style={{ fontSize: "11px", color: TEXT_DARK, marginBottom: "20px" }}>Jakarta, {formatDate(certificate.issueDate)}</p>
                     </div>
                   </div>
                 </div>

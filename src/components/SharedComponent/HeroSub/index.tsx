@@ -2,7 +2,7 @@
 
 import React, { FC } from "react";
 import Link from "next/link";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import ClientIcon from "@/components/SharedComponent/IconWrapper";
 
 interface Breadcrumb {
   label: string;
@@ -26,7 +26,7 @@ const HeroSub: FC<HeroSubProps> = ({ title, description, breadcrumbs }) => {
               <ol className="flex items-center gap-2 text-sm text-slate-900 dark:text-white">
                 {breadcrumbs.map((crumb, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    {index > 0 && <Icon icon="solar:arrow-right-linear" className="text-slate-500 dark:text-slate-400" />}
+                    {index > 0 && <ClientIcon icon="solar:arrow-right-linear" className="text-slate-500 dark:text-slate-400" />}
                     {index === breadcrumbs.length - 1 ? (
                       <span className="text-slate-900 dark:text-white font-medium">{crumb.label}</span>
                     ) : (

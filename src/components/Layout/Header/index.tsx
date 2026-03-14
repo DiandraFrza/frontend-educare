@@ -48,14 +48,13 @@ const Header = () => {
           {/* Right Side */}
           <div className="flex items-center gap-4">
             {/* CTA Button - Desktop */}
-            <a
-              href="https://forms.gle/5PdAx98uKhGQEzJE7"
-              target="_blank"
+            <Link
+              href="/daftar"
               className="hidden sm:inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-primary-700 transition-colors"
             >
               <span>Daftar</span>
               <Icon icon="solar:arrow-right-linear" className="text-lg" />
-            </a>
+            </Link>
 
             {/* Theme Toggler */}
             <ThemeToggler />
@@ -90,14 +89,14 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="https://forms.gle/5PdAx98uKhGQEzJE7"
-              target="_blank"
+            <Link
+              href="/daftar"
+              onClick={() => setIsMobileMenuOpen(false)}
               className="flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-3 rounded-xl font-semibold mt-4"
             >
               <span>Daftar Sekarang</span>
               <Icon icon="solar:arrow-right-linear" />
-            </a>
+            </Link>
           </nav>
         </div>
       </div>

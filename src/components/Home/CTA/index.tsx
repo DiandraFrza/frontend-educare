@@ -2,10 +2,9 @@
 
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { motion } from 'framer-motion';
-import { allCourses, allPackages } from '@/data/courses';
+import { allCourses } from '@/data/courses';
 
 const CTA = () => {
-  const totalSavings = allPackages.reduce((acc, pkg) => acc + pkg.savings, 0);
 
   return (
     <section className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
@@ -47,8 +46,7 @@ const CTA = () => {
               </h2>
 
               <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-                Pilih dari <strong>{allCourses.length}+ kelas</strong> mulai dari 10K saja! 
-                Atau ambil <strong>bundling package</strong> untuk hemat hingga {allPackages.length}0%.
+                Pilih dari <strong>{allCourses.length}+ kelas</strong> mulai dari 10K saja!
               </p>
 
               {/* Quick Stats */}
@@ -60,10 +58,6 @@ const CTA = () => {
                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                   <Icon icon="solar:check-circle-bold" className="text-success" />
                   <span className="text-sm">Mulai 10K</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <Icon icon="solar:check-circle-bold" className="text-success" />
-                  <span className="text-sm">{allPackages.length} Paket Hemat</span>
                 </div>
                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                   <Icon icon="solar:check-circle-bold" className="text-success" />

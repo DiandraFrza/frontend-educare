@@ -1,9 +1,10 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import ClientIcon from '@/components/SharedComponent/IconWrapper';
 import { CertificateCard } from '@/components/Certificates';
-import { certificates, certificateCategories, getCategoryById } from '@/data/certificates';
+import { certificateCategories, getCategoryById } from '@/data/certificates';
 import HeroSub from '@/components/SharedComponent/HeroSub';
+import { Certificate } from '@/types/certificate';
 
 export const metadata: Metadata = {
   title: 'Sertifikasi Kompetensi - Educare Academy',
@@ -11,11 +12,33 @@ export const metadata: Metadata = {
   keywords: 'sertifikat kompetensi, sertifikasi akuntansi, certified accurate professional, verifikasi sertifikat',
 };
 
-export default function SertifikasiPage() {
+async function fetchCertificates(): Promise<Certificate[]> {
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+    const serverUrl = apiUrl.replace('localhost', '127.0.0.1');
+    const res = await fetch(`${serverUrl}/certificates`, {
+      method: "GET",
+      cache: 'no-store'
+    });
+    const result = await res.json();
+    return Array.isArray(result.data) ? result.data : (result.data?.data || []);
+  } catch {
+    return [];
+  }
+}
+
+export default async function SertifikasiPage() {
   const breadcrumbs = [
     { label: 'Beranda', href: '/' },
     { label: 'Sertifikasi', href: '/sertifikasi' },
   ];
+
+  let certificates = await fetchCertificates();
+  // Fallback if public fetch fails (because list is admin only)
+  if (certificates.length === 0) {
+    const dummy = await import('@/data/certificates');
+    certificates = dummy.certificates.slice(0, 8); // Just show a few as fallback
+  }
 
   return (
     <main>
@@ -24,74 +47,6 @@ export default function SertifikasiPage() {
         description="Verifikasi keaslian sertifikat kompetensi dari Educare Academy. Setiap sertifikat dilengkapi dengan QR code untuk memastikan validitasnya."
         breadcrumbs={breadcrumbs}
       />
-
-      {/* Statistics Section */}
-      <section className="py-12 bg-secondary-50 dark:bg-slate-800/50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[
-              { icon: 'solar:diploma-bold', value: '500+', label: 'Sertifikat Terbit' },
-              { icon: 'solar:users-group-rounded-bold', value: '500+', label: 'Peserta Tersertifikasi' },
-              { icon: 'solar:check-circle-bold', value: '100%', label: 'Terverifikasi' },
-              { icon: 'solar:shield-check-bold', value: '5', label: 'Kategori Kompetensi' },
-            ].map((stat, index) => (
-              <div 
-                key={index}
-                className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center shadow-soft"
-              >
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Icon icon={stat.icon} className="text-2xl text-primary-600 dark:text-primary-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-secondary-900 dark:text-white mb-1">
-                  {stat.value}
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Categories Section */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-secondary-900 dark:text-white mb-4">
-              Kategori Sertifikasi
-            </h2>
-            <p className="text-slate-600 dark:text-slate-400">
-              Pilih kategori sertifikasi sesuai bidang kompetensi yang ingin Anda verifikasi
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {certificateCategories.map((category) => (
-              <div 
-                key={category.id}
-                className="group bg-white dark:bg-slate-800 rounded-xl p-4 text-center shadow-soft hover:shadow-soft-xl transition-all cursor-pointer border border-transparent hover:border-primary-200 dark:hover:border-primary-800"
-              >
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-3 transition-colors bg-${category.color}-100 dark:bg-${category.color}-900/30`}>
-                  <Icon 
-                    icon={category.icon} 
-                    className={`text-2xl text-${category.color}-600 dark:text-${category.color}-400`}
-                  />
-                </div>
-                <h3 className="font-semibold text-secondary-900 dark:text-white mb-1 text-sm">
-                  {category.name}
-                </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-2">
-                  {category.description}
-                </p>
-                <span className="text-xs font-medium text-primary-600 dark:text-primary-400">
-                  {category.count} Sertifikat
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Certificates List */}
       <section className="py-12 bg-secondary-50 dark:bg-slate-800/50">
@@ -113,7 +68,7 @@ export default function SertifikasiPage() {
                 placeholder="Cari nomor sertifikat..."
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
-              <Icon 
+              <ClientIcon 
                 icon="solar:magnifer-linear" 
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
               />
@@ -139,7 +94,7 @@ export default function SertifikasiPage() {
             <div className="bg-gradient-to-br from-secondary-900 to-secondary-800 rounded-2xl p-6 md:p-10 text-white">
               <div className="flex flex-col md:flex-row items-center gap-6">
                 <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Icon icon="solar:qr-code-bold" className="text-4xl text-primary-400" />
+                  <ClientIcon icon="solar:qr-code-bold" className="text-4xl text-primary-400" />
                 </div>
                 <div className="text-center md:text-left">
                   <h3 className="text-xl font-bold mb-2">
@@ -151,15 +106,15 @@ export default function SertifikasiPage() {
                   </p>
                   <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                     <div className="flex items-center gap-2 text-xs">
-                      <Icon icon="solar:check-circle-bold" className="text-green-400" />
+                      <ClientIcon icon="solar:check-circle-bold" className="text-green-400" />
                       <span>Scan QR Code</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
-                      <Icon icon="solar:check-circle-bold" className="text-green-400" />
+                      <ClientIcon icon="solar:check-circle-bold" className="text-green-400" />
                       <span>Lihat Detail</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
-                      <Icon icon="solar:check-circle-bold" className="text-green-400" />
+                      <ClientIcon icon="solar:check-circle-bold" className="text-green-400" />
                       <span>Validasi Instan</span>
                     </div>
                   </div>

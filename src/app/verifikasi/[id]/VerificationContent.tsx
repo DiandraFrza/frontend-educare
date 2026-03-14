@@ -7,23 +7,52 @@ import { motion } from 'framer-motion';
 import { Certificate } from '@/types/certificate';
 import { getCategoryLabel, getLevelLabel } from '@/data/certificates';
 
-interface VerificationContentProps {
-  certificate: Certificate | null;
-}
+import { useParams } from 'next/navigation';
 
-export default function VerificationContent({ certificate }: VerificationContentProps) {
+export default function VerificationContent() {
+  const params = useParams();
+  const certificateId = typeof params?.id === 'string' ? params.id : '';
+  
+  const [certificate, setCertificate] = useState<Certificate | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
   const [verifiedAt, setVerifiedAt] = useState<string>('');
 
   useEffect(() => {
-    // Simulate verification process
-    const timer = setTimeout(() => {
-      setVerifiedAt(new Date().toLocaleString('id-ID'));
+    if (!certificateId) {
       setIsLoading(false);
-    }, 1500);
+      return;
+    }
 
-    return () => clearTimeout(timer);
-  }, []);
+    const checkCertificate = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+        const response = await fetch(`${apiUrl}/certificates/verify?number=${certificateId}`, {
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          setCertificate(result.data);
+          setVerifiedAt(new Date().toLocaleString('id-ID'));
+        } else {
+          setErrorMsg(result.message || 'Sertifikat tidak ditemukan');
+          setCertificate(null);
+        }
+      } catch (error) {
+        console.error("Verification error:", error);
+        setErrorMsg('Terjadi kesalahan saat memverifikasi sertifikat');
+        setCertificate(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkCertificate();
+  }, [certificateId]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);

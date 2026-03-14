@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
     const TEXT_MUTED = "#6b7280";
     const BORDER_COLOR = "#e5e7eb";
 
-    const directorName = certificate.directorName || "M. Aziz Andriansyah, S.Pd., Gr., CAAT., CAP., CTTr";
+    const directorName = certificate.directorName || "M. Aziz Andriansyah, S.Pd., Gr., CAAT., CAP., CTTrr";
     const directorTitle = certificate.directorTitle || "Direktur Utama";
     const managerName = certificate.managerName || "Azriel Hikmal Maulana Rafi, S.Pd.";
     const managerTitle = certificate.managerTitle || "Manager Divisi Edukasi";

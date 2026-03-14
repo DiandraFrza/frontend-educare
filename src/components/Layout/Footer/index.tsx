@@ -4,7 +4,7 @@
 
 import Link from "next/link";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { allCourses, allPackages } from "@/data/courses";
+import { allCourses } from "@/data/courses";
 
 const Footer = () => {
   const menuLinks = [
@@ -21,14 +21,12 @@ const Footer = () => {
     { label: "Microsoft Excel", href: "#courses" },
     { label: "Dasar-Dasar Pajak", href: "#courses" },
     { label: "Akuntansi UMKM", href: "#courses" },
-    { label: "Paket Bundling Hemat", href: "#courses" },
   ];
 
   const contactInfo = [
     { icon: "tabler:map-pin", text: "Jakarta" },
     { icon: "tabler:clock", text: "Jadwal Fleksibel" },
     { icon: "tabler:users", text: `${allCourses.length}+ Kelas Tersedia` },
-    { icon: "tabler:gift", text: `${allPackages.length} Paket Bundling` },
   ];
 
   return (

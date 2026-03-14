@@ -2,10 +2,9 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CourseCard, PackageCard, CategoryFilter } from './components';
+import { CourseCard, CategoryFilter } from './components';
 import { 
   allCourses, 
-  allPackages, 
   courseCategories,
   getCoursesByCategory,
   getPopularCourses 
@@ -101,33 +100,6 @@ const Courses: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCourses.map((course, index) => (
               <CourseCard key={course.id} course={course} index={index} />
-            ))}
-          </div>
-        </div>
-
-        {/* Packages */}
-        <div className="mt-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-2xl mx-auto mb-12"
-          >
-            <span className="inline-block px-4 py-1.5 bg-white dark:bg-slate-800 text-red-500 text-sm font-semibold rounded-full shadow-soft dark:shadow-slate-900/50 mb-4 border border-slate-100 dark:border-slate-700">
-              Paket Hemat
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900 dark:text-white mb-4">
-              Bundling Package
-            </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-lg">
-              Pilih paket bundling untuk hemat lebih banyak! 
-              Kombinasi kelas yang saling melengkapi.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allPackages.map((pkg, index) => (
-              <PackageCard key={pkg.id} package={pkg} index={index} />
             ))}
           </div>
         </div>

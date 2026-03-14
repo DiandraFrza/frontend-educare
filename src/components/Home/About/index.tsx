@@ -51,7 +51,6 @@ const About = () => {
     { icon: "solar:document-text-linear", name: "Excel", count: "4 Kelas", color: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400" },
     { icon: "solar:wallet-linear", name: "Pajak", count: "4 Kelas", color: "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400" },
     { icon: "solar:shop-linear", name: "UMKM", count: "2 Kelas", color: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400" },
-    { icon: "solar:gift-linear", name: "Paket", count: "6 Bundling", color: "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400" },
   ];
 
   const containerVariants = {

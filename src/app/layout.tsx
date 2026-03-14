@@ -1,11 +1,9 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Layout/Header";
-import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "next-themes";
-import ScrollToTop from "@/components/ScrollToTop";
 import AuthProvider from "./api/auth/providers/AuthProvider";
 import { Toaster } from "react-hot-toast";
+import SiteWrapper from "@/components/Layout/SiteWrapper";
 
 const font = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700"], });
 
@@ -23,10 +21,9 @@ export default function RootLayout({
             enableSystem={true}
             defaultTheme="light"
           >
-            <Header />
-            {children}
-            <Footer />
-            <ScrollToTop />
+            <SiteWrapper>
+              {children}
+            </SiteWrapper>
             <Toaster position="top-right" />
           </ThemeProvider>
         </AuthProvider>
