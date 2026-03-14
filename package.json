@@ -24,7 +24,6 @@
     "jspdf": "^4.2.0",
     "jspdf-autotable": "^5.0.7",
     "next": "14.2.4",
-    "next-auth": "^4.24.7",
     "next-themes": "^0.3.0",
     "puppeteer-core": "^24.37.5",
     "qrcode": "^1.5.4",
