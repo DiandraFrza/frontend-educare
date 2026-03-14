@@ -44,68 +44,50 @@ const CertificatePreview: React.FC<CertificatePreviewProps> = ({ certificate, ve
   const handlePrint = () => window.print();
 
   const handleDownload = async () => {
+    if (!certificateRef.current) return;
     setIsGenerating(true);
     try {
-      const getImageBase64 = async (url: string): Promise<string | null> => {
-        try {
-          const response = await fetch(url);
-          if (!response.ok) return null;
-          const blob = await response.blob();
-          return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result as string);
-            reader.onerror = reject;
-            reader.readAsDataURL(blob);
-          });
-        } catch {
-          return null;
-        }
-      };
+      const html2canvas = (await import("html2canvas")).default;
+      const { jsPDF } = await import("jspdf");
 
-      const QRCode = (await import("qrcode")).default;
-      const qrDataUrl = await QRCode.toDataURL(verificationUrl, {
-        width: 60,
-        margin: 0,
-        color: { dark: "#1e3a5f", light: "#ffffff" },
+      // Capture the certificate element exactly as rendered on screen
+      const canvas = await html2canvas(certificateRef.current, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: "#ffffff",
+        logging: false,
       });
 
-      // Get logo images
-      const logoDataUrl = await getImageBase64("/images/logo/logoedu.svg");
-      const academyLogoUrl = await getImageBase64("/images/logo/academy-excellence.png");
-      
-      // Get signature images if available
-      const directorSigUrl = certificate.directorSignature ? await getImageBase64(certificate.directorSignature) : null;
-      const managerSigUrl = certificate.managerSignature ? await getImageBase64(certificate.managerSignature) : null;
+      // A4 Landscape dimensions in mm
+      const pdfWidth = 297;
+      const pdfHeight = 210;
 
-      const response = await fetch("/api/certificate/pdf", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          certificate,
-          verificationUrl,
-          type,
-          qrDataUrl,
-          barcodeDataUrl: qrDataUrl, // Using QR as barcode for now
-          logoDataUrl: logoDataUrl || academyLogoUrl || "",
-          directorSigUrl,
-          managerSigUrl,
-        }),
+      const pdf = new jsPDF({
+        orientation: "landscape",
+        unit: "mm",
+        format: "a4",
       });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: "Unknown error" }));
-        throw new Error(errorData.error || errorData.details || `HTTP ${response.status}`);
-      }
+      // Calculate dimensions to fit certificate in A4 landscape
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const finalWidth = imgWidth * ratio;
+      const finalHeight = imgHeight * ratio;
 
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `Sertifikat-${certificate.certificateNumber}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      // Center the image on the page
+      const offsetX = (pdfWidth - finalWidth) / 2;
+      const offsetY = (pdfHeight - finalHeight) / 2;
+
+      const imgData = canvas.toDataURL("image/png", 1.0);
+      pdf.addImage(imgData, "PNG", offsetX, offsetY, finalWidth, finalHeight);
+
+      // Format filename: Sertifikat_nama_EducareAcademy
+      const sanitizedName = certificate.holderName
+        .replace(/\s+/g, "_")
+        .replace(/[^a-zA-Z0-9_]/g, "");
+      pdf.save(`Sertifikat_${sanitizedName}_EducareAcademy.pdf`);
     } catch (e) {
       console.error("Download error:", e);
       alert(`Gagal generate PDF: ${e instanceof Error ? e.message : "Unknown error"}`);
